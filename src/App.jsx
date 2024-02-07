@@ -23,6 +23,7 @@ function App() {
     <>
       <input
         type="text"
+        className="rounded border-0 text-xl p-2"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -35,7 +36,13 @@ function App() {
         ) : (
           <div>
             <div>
-              {dataJSON ? <InfoCard data={data} /> : <>{"Found data: ❌"}</>}
+              {dataJSON ? (
+                <InfoCard data={data} />
+              ) : search ? (
+                <>{"Found data: ❌"}</>
+              ) : (
+                <>Type something...</>
+              )}
             </div>
           </div>
         )}
